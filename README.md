@@ -33,7 +33,7 @@ require 'bundler/setup'
 require 'jeanine'
 
 class App < Jeanine::App
-  get "" do
+  root do
     "Hello world"
   end
 end
