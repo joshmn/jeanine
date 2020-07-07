@@ -1,18 +1,22 @@
 require 'jeanine/callbacks'
 require 'jeanine/mimes'
 require 'jeanine/request'
+require 'jeanine/rescuing'
 require 'jeanine/response'
 require 'jeanine/renderer'
 require 'jeanine/routing'
+require 'jeanine/session'
 
 module Jeanine
   class App
+    include Session
     include Routing::Evaluation
     attr_reader :request, :response
-    class << self
-      include Routing::DSL
-      include Callbacks
 
+    class << self
+      include Callbacks
+      include Routing::DSL
+      include Rescuing
       alias :_new :new
       def new(*args, &block)
         initialize!
@@ -37,11 +41,24 @@ module Jeanine
       end
     end
 
+    include Rescuing
+
     def call(env)
-      @env = env
-      @request = Jeanine::Request.new(env)
-      @response = Jeanine::Response.new
-      catch(:halt) { route_eval }
+      begin
+        @env = env
+        @request = Jeanine::Request.new(env)
+        @response = Jeanine::Response.new
+        catch(:halt) { route_eval }
+      rescue => error
+        handler = self.class.rescue_handlers[error.class]
+        raise error unless handler
+        if handler.is_a?(Symbol)
+          @response.write(send(handler, error))
+        else
+          @response.write(instance_exec(error, &handler))
+        end
+        @response.complete!
+      end
     end
 
     private

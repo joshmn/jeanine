@@ -4,8 +4,8 @@
 require_relative '../lib/jeanine/version'
 
 version = Jeanine::VERSION
-system("gem build brody.gemspec")
-system("gem push brody-#{version}.gem")
-system("rm brody-#{version}.gem")
+system("gem build jeanine.gemspec")
+system("gem push jeanine-#{version}.gem")
+system("rm jeanine-#{version}.gem")
 system("git tag -a v#{version} -m 'version #{version}'")
 system("git push origin v#{version}")

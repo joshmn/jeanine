@@ -110,6 +110,42 @@ class App < Jeanine::App
 end 
 ```
 
+### Sessions
+
+Uses Rack's session management.
+
+```ruby 
+class App < Jeanine::App
+  root do 
+    session[:uid] = SecureRandom.hex
+  end
+end 
+```
+
+### Error handling
+
+```ruby 
+class App < Jeanine::App
+  rescue_from NoMethodError, RuntimeError do |exception|
+    response.status = 500
+    "Oh no!"
+  end
+  rescue_from StandardError, with: :handle_error!
+  root do 
+    @title = "My cool app"
+    raise NoMethodError 
+    render template: "root.html.erb", layout: "application.html.erb"
+  end
+
+  private 
+  
+  def handle_error!(exception)
+    response.status = 500
+    render template: "error.html.erb" 
+  end
+end 
+```
+
 ## Development
 
 ### Ideologies
