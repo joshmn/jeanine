@@ -1,4 +1,4 @@
-module Brody
+module Jeanine
   class PathProxy
     def initialize(context, pathname, options = {})
       @context = context

@@ -1,6 +1,6 @@
 require 'forwardable'
 
-module Brody
+module Jeanine
   class Router
     extend Forwardable
 

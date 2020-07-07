@@ -1,4 +1,4 @@
-module Brody
+module Jeanine
   module Callbacks
     def _callbacks
       @_callbacks ||= {

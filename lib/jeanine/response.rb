@@ -1,7 +1,7 @@
 require 'forwardable'
 require 'json'
 
-module Brody
+module Jeanine
   class Response
     attr_accessor :action_variables
     attr_reader :headers, :body

@@ -1,13 +1,13 @@
 require 'forwardable'
 require 'logger'
 
-require "brody/version"
-require 'brody/core_ext'
-require 'brody/router'
-require 'brody/app'
+require "jeanine/version"
+require 'jeanine/core_ext'
+require 'jeanine/router'
+require 'jeanine/app'
 require 'tilt'
 
-module Brody
+module Jeanine
   def self.tilt_cache
     @title_cache ||= Tilt::Cache.new
   end

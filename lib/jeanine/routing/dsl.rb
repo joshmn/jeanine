@@ -1,13 +1,13 @@
-require 'brody/path_proxy'
+require 'jeanine/path_proxy'
 
-module Brody
+module Jeanine
   module Routing
     module DSL
       extend SingleForwardable
 
       RouteError = Class.new(StandardError)
 
-      def_delegator :Brody, :router
+      def_delegator :Jeanine, :router
 
       def get(path = nil, options = {}, &block)
         router.add(:GET, path, options, &block)
@@ -38,7 +38,7 @@ module Brody
       end
 
       def path(pathname, options = {}, &block)
-        option_merger = Brody::PathProxy.new(self, pathname, options)
+        option_merger = Jeanine::PathProxy.new(self, pathname, options)
         option_merger.instance_eval(&block)
       end
 

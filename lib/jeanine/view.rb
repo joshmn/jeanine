@@ -1,4 +1,4 @@
-module Brody
+module Jeanine
   class View
   end
 end

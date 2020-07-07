@@ -1,20 +1,20 @@
-require_relative 'lib/brody/version'
+require_relative 'lib/jeanine/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = "brody"
-  spec.version       = Brody::VERSION
+  spec.name          = "jeanine"
+  spec.version       = Jeanine::VERSION
   spec.authors       = ["Josh Brody"]
   spec.email         = ["git@josh.mn"]
 
   spec.summary       = "A framework."
   spec.description   = spec.summary
-  spec.homepage      = "https://github.com/joshmn/broding"
+  spec.homepage      = "https://github.com/joshmn/jeanine"
   spec.license       = "MIT"
   spec.required_ruby_version = Gem::Requirement.new(">= 2.3.0")
 
   spec.metadata["homepage_uri"] = spec.homepage
-  spec.metadata["source_code_uri"] = "https://github.com/joshmn/broding"
-  spec.metadata["changelog_uri"] = "https://github.com/joshmn/broding"
+  spec.metadata["source_code_uri"] = "https://github.com/joshmn/jeanine"
+  spec.metadata["changelog_uri"] = "https://github.com/joshmn/jeanine"
 
   # Specify which files should be added to the gem when it is released.
   # The `git ls-files -z` loads the files in the RubyGem that have been added into git.

@@ -1,4 +1,4 @@
-module Brody
+module Jeanine
   class Mimes
     MimeTypeNotFound = Class.new(StandardError)
     MIME_TYPES_INVERTED = Rack::Mime::MIME_TYPES.invert

@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    brody (0.1.0)
+    jeanine (0.1.0)
       rack
       tilt
 
@@ -30,7 +30,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  brody!
+  jeanine!
   rake
   rspec
 

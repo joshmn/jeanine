@@ -1,7 +1,7 @@
 require 'rack/request'
-require 'brody/headers'
+require 'jeanine/headers'
 
-module Brody
+module Jeanine
   class Request < Rack::Request
     FORMAT_REGEX = %r{\.(\w+)\z}
 
@@ -18,7 +18,7 @@ module Brody
     end
 
     def headers
-      @headers ||= Brody::Headers.new(self)
+      @headers ||= Jeanine::Headers.new(self)
     end
 
     def post?

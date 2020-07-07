@@ -1,6 +1,6 @@
-require 'brody/view'
+require 'jeanine/view'
 
-module Brody
+module Jeanine
   class Renderer
     def self._renderers
       @_renderers ||= Set.new
@@ -109,7 +109,7 @@ module Brody
     end
 
     add :template do |template, options|
-      view = Brody::View.new
+      view = Jeanine::View.new
       @response.action_variables.each do |k,v|
         view.instance_variable_set(k, v.dup)
       end

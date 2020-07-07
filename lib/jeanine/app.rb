@@ -1,11 +1,11 @@
-require 'brody/callbacks'
-require 'brody/mimes'
-require 'brody/request'
-require 'brody/response'
-require 'brody/renderer'
-require 'brody/routing'
+require 'jeanine/callbacks'
+require 'jeanine/mimes'
+require 'jeanine/request'
+require 'jeanine/response'
+require 'jeanine/renderer'
+require 'jeanine/routing'
 
-module Brody
+module Jeanine
   class App
     include Routing::Evaluation
     attr_reader :request, :response
@@ -29,7 +29,7 @@ module Brody
       end
 
       def router
-        Brody.router
+        Jeanine.router
       end
 
       def call(env)
@@ -39,8 +39,8 @@ module Brody
 
     def call(env)
       @env = env
-      @request = Brody::Request.new(env)
-      @response = Brody::Response.new
+      @request = Jeanine::Request.new(env)
+      @response = Jeanine::Response.new
       catch(:halt) { route_eval }
     end
 

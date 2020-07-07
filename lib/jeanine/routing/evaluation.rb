@@ -1,4 +1,4 @@
-module Brody
+module Jeanine
   module Routing
     module Evaluation
       IGNORED_INSTANCE_VARIABLES = [:@env]
@@ -22,7 +22,7 @@ module Brody
 
       def find_route
         matches = nil
-        route = Brody.router[@request.request_method.to_sym].detect do |r|
+        route = Jeanine.router[@request.request_method.to_sym].detect do |r|
           matches = r[:compiled_path].match(@request.path_info)
           !matches.nil?
         end

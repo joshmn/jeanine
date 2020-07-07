@@ -1,15 +1,19 @@
-# Brody
+# Jeanine
 
 A Ruby micro-web-framework that gives you enough training wheels to be productive, while being as nearly as fast as Rack itself.
 
 Its design (and some parts of the code) is influenced by/inherited from (thanks!) Ruby on Rails, Rack::App, Hobbit, and Cuba. Without them this is nothing.
  
+## Name 
+
+Named after my mom. Because she was the best.
+
 ## Installation
 
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'brody'
+gem 'jeanine'
 ```
 
 And then execute:
@@ -18,7 +22,7 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install brody
+    $ gem install jeanine
 
 ## Basic usage
 
@@ -26,9 +30,9 @@ Drop this into `config.ru`:
 
 ```ruby
 require 'bundler/setup'
-require 'brody'
+require 'jeanine'
 
-class App < Brody::App
+class App < Jeanine::App
   get "" do
     "Hello world"
   end
@@ -42,7 +46,7 @@ run App
 ## Advanced usage 
 
 ```ruby
-class App < Brody::App 
+class App < Jeanine::App 
   path "/posts" do 
     get do 
       "Posts get"
@@ -78,7 +82,7 @@ end
 Supports `before` and `after` callbacks (same DSL): 
 
 ```
-class App < Brody::App
+class App < Jeanine::App
   before do 
     puts "All"
   end
@@ -97,7 +101,7 @@ end
 Basic support for rendering. Be explicit.
 
 ```ruby 
-class App < Brody::App
+class App < Jeanine::App
   # loads views/root.html.erb and views/layouts/application.html.erb
   root do 
     @title = "My cool app"
@@ -120,8 +124,7 @@ end
 Framework            Requests/sec  % from best
 ----------------------------------------------
 rack                     17299.31      100.00%
-broding                  16087.19       92.99%
-brody                    16022.71       92.62%
+jeanine                  16022.71       92.62%
 rack-response            15462.50       89.38%
 syro                     15416.13       89.11%
 watts                    15307.52       88.49%
@@ -150,9 +153,8 @@ syro                    44        4288
 cuba                    44        4056
 watts                   46        3648
 hobbit                  48        4416
-brody                   50        4496
+jeanine                 52        4576
 hobby                   52        5416
-broding                 54        4656
 rack-response           55        5128
 rails-metal             59        5848
 hanami-router           63        5184
@@ -170,7 +172,7 @@ rails-api              383       34949
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/brody.
+Bug reports and pull requests are welcome on GitHub at https://github.com/joshmn/jeanine.
 
 ## License
 

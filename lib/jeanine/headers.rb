@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module Brody
+module Jeanine
   class Headers
     CGI_VARIABLES = Set.new(%W[
         AUTH_TYPE
