@@ -1,5 +1,4 @@
 require 'jeanine/view'
-require 'jeanine/view_paths'
 
 module Jeanine
   def self.view_paths

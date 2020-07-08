@@ -1,5 +1,8 @@
 require_relative 'lib/jeanine/version'
 
+lib = File.expand_path('lib', __dir__)
+$LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
+
 Gem::Specification.new do |spec|
   spec.name          = "jeanine"
   spec.version       = Jeanine::VERSION
