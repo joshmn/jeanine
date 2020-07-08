@@ -1,29 +1,26 @@
 PATH
   remote: .
   specs:
-    jeanine (0.1.0)
+    jeanine (0.2.0)
       rack
       tilt
 
 GEM
   remote: https://rubygems.org/
   specs:
-    diff-lcs (1.3)
-    rack (2.1.2)
+    ansi (1.5.0)
+    builder (3.2.4)
+    minitest (5.14.1)
+    minitest-reporters (1.4.2)
+      ansi
+      builder
+      minitest (>= 5.0)
+      ruby-progressbar
+    rack (2.2.3)
+    rack-test (1.1.0)
+      rack (>= 1.0, < 3)
     rake (13.0.1)
-    rspec (3.9.0)
-      rspec-core (~> 3.9.0)
-      rspec-expectations (~> 3.9.0)
-      rspec-mocks (~> 3.9.0)
-    rspec-core (3.9.1)
-      rspec-support (~> 3.9.1)
-    rspec-expectations (3.9.0)
-      diff-lcs (>= 1.2.0, < 2.0)
-      rspec-support (~> 3.9.0)
-    rspec-mocks (3.9.1)
-      diff-lcs (>= 1.2.0, < 2.0)
-      rspec-support (~> 3.9.0)
-    rspec-support (3.9.2)
+    ruby-progressbar (1.10.1)
     tilt (2.0.10)
 
 PLATFORMS
@@ -31,8 +28,10 @@ PLATFORMS
 
 DEPENDENCIES
   jeanine!
+  minitest
+  minitest-reporters
+  rack-test
   rake
-  rspec
 
 BUNDLED WITH
    2.1.4

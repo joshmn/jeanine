@@ -34,7 +34,7 @@ module Jeanine
         while index < matches.captures.size
           param = route[:params][index]
           @request.params[param] = matches.captures[index]
-          if index == match.captures.size
+          if index == matches.captures.size
             @request.params[param].gsub!(@request.format)
           end
           index += 1

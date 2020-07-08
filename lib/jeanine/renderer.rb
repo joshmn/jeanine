@@ -81,6 +81,16 @@ module Jeanine
       Thread.current[:tilt_cache] ||= Tilt::Cache.new
     end
 
+    def find_template!(template)
+      Jeanine.view_paths.to_a.each do |path|
+        template_with_path = "#{path}/#{template}"
+        if File.exist?(template_with_path)
+          return template_with_path
+        end
+      end
+      raise "Template not found in view paths. Looking for #{template} in #{Jeanine.view_paths.to_a.join(', ')}"
+    end
+
     def html(engine, template_name, options = {}, locals = {}, &block)
       locals          = options.delete(:locals) || locals || {}
       layout          = options[:layout]
@@ -94,6 +104,7 @@ module Jeanine
         unless layout.include?("layouts/")
           layout = "layouts/#{layout}"
         end
+        layout = find_template!(layout)
         options = options.merge(layout: false, scope: scope)
         catch(:layout_missing) { return html(engine, layout, options, locals) { output } }
       end
@@ -104,7 +115,8 @@ module Jeanine
       Tilt::Cache.new.fetch engine, template_name, options do
         template = Tilt[engine]
         raise "Template engine not found: #{engine}" if template.nil?
-        template.new("views/#{template_name}", options)
+        template_name = find_template!(template_name)
+        template.new(template_name, options)
       end
     end
 

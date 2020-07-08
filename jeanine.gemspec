@@ -27,5 +27,7 @@ Gem::Specification.new do |spec|
   spec.add_runtime_dependency 'rack'
   spec.add_runtime_dependency 'tilt'
   spec.add_development_dependency "rake"
-  spec.add_development_dependency "rspec"
+  spec.add_development_dependency "minitest"
+  spec.add_development_dependency "minitest-reporters"
+  spec.add_development_dependency "rack-test"
 end

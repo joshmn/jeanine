@@ -6,17 +6,22 @@ require 'jeanine/response'
 require 'jeanine/renderer'
 require 'jeanine/routing'
 require 'jeanine/session'
+require 'jeanine/view_paths'
 
 module Jeanine
   class App
     include Session
+    include Rescuing
     include Routing::Evaluation
+
     attr_reader :request, :response
 
     class << self
       include Callbacks
       include Routing::DSL
       include Rescuing
+      include ViewPaths
+
       alias :_new :new
       def new(*args, &block)
         initialize!
@@ -40,8 +45,6 @@ module Jeanine
         new.call env
       end
     end
-
-    include Rescuing
 
     def call(env)
       begin

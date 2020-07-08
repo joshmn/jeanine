@@ -8,6 +8,9 @@ require 'jeanine/app'
 require 'tilt'
 
 module Jeanine
+  def self.view_paths
+    @_view_paths ||= Set.new(["views"])
+  end
   def self.tilt_cache
     @title_cache ||= Tilt::Cache.new
   end
