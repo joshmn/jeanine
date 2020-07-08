@@ -1,5 +1,5 @@
 require 'jeanine/view'
-
+require 'tilt'
 module Jeanine
   def self.view_paths
     @_view_paths ||= Set.new(["views"])
