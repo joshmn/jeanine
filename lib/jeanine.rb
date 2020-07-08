@@ -5,7 +5,6 @@ require 'logger'
 
 require "jeanine/version"
 require 'jeanine/core_ext'
-require 'jeanine/environment'
 
 module Jeanine
   def env
