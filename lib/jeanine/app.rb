@@ -1,4 +1,3 @@
-require 'jeanine/environment'
 require 'jeanine/mimes'
 require 'jeanine/request'
 require 'jeanine/response'
