@@ -18,6 +18,10 @@ module Jeanine
     def mock_app(&block)
       app = Jeanine::App
       app.class_eval(&block)
+      app.plugin :Rescuing
+      app.plugin :Callbacks
+      app.plugin :Session
+      app.plugin :Rendering
       @app = app.new
     end
   end

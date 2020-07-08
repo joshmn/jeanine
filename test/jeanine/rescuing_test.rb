@@ -11,6 +11,7 @@ describe Jeanine::App do
   describe 'callbacks' do
     before do
       mock_app do
+        plugin :Rescuing
         rescue_from NoMethodError do |exception|
           response.status = 404
           exception.message

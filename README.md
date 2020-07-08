@@ -77,12 +77,15 @@ class App < Jeanine::App
 end 
 ```
 
+## Plugins 
+
 ### Callbacks 
 
 Supports `before` and `after` callbacks (same DSL): 
 
 ```
 class App < Jeanine::App
+  plugin :Callbacks 
   before do 
     puts "All"
   end
@@ -102,6 +105,7 @@ Basic support for rendering. Be explicit.
 
 ```ruby 
 class App < Jeanine::App
+  plugin :Rendering 
   # loads views/root.html.erb and views/layouts/application.html.erb
   root do 
     @title = "My cool app"
@@ -116,6 +120,7 @@ Uses Rack's session management.
 
 ```ruby 
 class App < Jeanine::App
+  plugin :Session
   root do 
     session[:uid] = SecureRandom.hex
   end
@@ -126,6 +131,7 @@ end
 
 ```ruby 
 class App < Jeanine::App
+  :plugin Rescuing 
   rescue_from NoMethodError, RuntimeError do |exception|
     response.status = 500
     "Oh no!"

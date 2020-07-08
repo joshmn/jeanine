@@ -11,6 +11,7 @@ describe Jeanine::App do
   describe 'callbacks' do
     before do
       mock_app do
+        plugin :Callbacks
         before do
           @name = "Jeanine"
         end

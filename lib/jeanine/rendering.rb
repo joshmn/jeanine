@@ -139,4 +139,11 @@ module Jeanine
       text
     end
   end
+
+  module Rendering
+    def render(*args)
+      @response.action_variables = instance_variables_cache
+      Renderer.new(@response).render(*args)
+    end
+  end
 end

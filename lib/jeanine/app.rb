@@ -1,25 +1,22 @@
-require 'jeanine/rescuing'
-
-require 'jeanine/callbacks'
 require 'jeanine/mimes'
 require 'jeanine/request'
 require 'jeanine/response'
-require 'jeanine/renderer'
 require 'jeanine/routing'
-require 'jeanine/session'
 require 'jeanine/view_paths'
 
 module Jeanine
   class App
-    include Session
     include Routing::Evaluation
 
     attr_reader :request, :response
 
     def self.plugin(name)
       unless Jeanine._installed_plugins.include?(name)
-        Jeanine._installed_plugins << name
+        unless const_defined?("Jeanine::#{name}")
+          require "jeanine/#{name.to_s.underscore}"
+        end
         include Kernel.const_get("Jeanine::#{name}")
+        Jeanine._installed_plugins << name
       end
     end
 
@@ -27,10 +24,11 @@ module Jeanine
       Jeanine._installed_plugins
     end
 
-    plugin :Rescuing
+    #plugin :Rescuing
+    # plugin :Rendering
+    #plugin :Callbacks
 
     class << self
-      include Callbacks
       include Routing::DSL
       include ViewPaths
 
@@ -73,11 +71,6 @@ module Jeanine
                   else
                     @request.params
                   end
-    end
-
-    def render(*args)
-      @response.action_variables = instance_variables_cache
-      Renderer.new(@response).render(*args)
     end
 
     def instance_variables_cache
