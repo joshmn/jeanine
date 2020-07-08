@@ -16,7 +16,7 @@ Gem::Specification.new do |spec|
   spec.metadata["source_code_uri"] = "https://github.com/joshmn/jeanine"
   spec.metadata["changelog_uri"] = "https://github.com/joshmn/jeanine"
 
-  spec.files = Dir['lib/**/*.rb']
+  s.files        = Dir["README.md", "MIT-LICENSE", "exe/**/*", "lib/**/*"]
 
   spec.bindir        = "exe"
   spec.executables   = ["jeanine"]
