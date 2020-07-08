@@ -1,7 +1,6 @@
 module Jeanine
   module Routing
     module Evaluation
-      IGNORED_INSTANCE_VARIABLES = [:@env]
       def route_eval
         before_find_route!
         route = find_route
