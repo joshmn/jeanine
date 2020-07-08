@@ -1,5 +1,5 @@
 module Jeanine
-  module Rescuing
+  module Rescuable
     def self.included(base)
       base.extend ClassMethods
       base.prepend InstanceMethods

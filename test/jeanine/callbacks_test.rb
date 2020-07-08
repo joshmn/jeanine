@@ -18,9 +18,17 @@ describe Jeanine::App do
         before /posts/ do
           @name = "Josh"
         end
+        before /foods/ do
+          @favorite = params[:favorite]
+        end
+
         get "/name" do
           response.status = 302
           @name
+        end
+
+        get "/foods" do
+          @favorite
         end
 
         path "/posts" do
@@ -39,6 +47,11 @@ describe Jeanine::App do
     it 'returns Josh' do
       get "/posts"
       expect(last_response.body).must_equal "Josh"
+    end
+
+    it 'returns favorite food' do
+      get "/foods?favorite=water"
+      expect(last_response.body).must_equal "water"
     end
   end
 end

@@ -135,7 +135,7 @@ end
 
 ```ruby 
 class App < Jeanine::App
-  :plugin Rescuing 
+  plugin :Resucable 
   rescue_from NoMethodError, RuntimeError do |exception|
     response.status = 500
     "Oh no!"
@@ -165,6 +165,8 @@ end
 ## Benchmarks 
 
 ### Requests/second
+
+Benched on a Intel Core i7-8700B / 64GB RAM.
 
 ```
 Framework            Requests/sec  % from best

@@ -16,6 +16,10 @@ module Jeanine
       super
     end
 
+    def params
+      super.deep_transform_keys!(&:to_sym)
+    end
+
     def post?
       request_method == 'POST'
     end
