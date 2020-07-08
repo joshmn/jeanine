@@ -1,3 +1,4 @@
+require 'jeanine/cli'
 require 'jeanine/mimes'
 require 'jeanine/request'
 require 'jeanine/response'
