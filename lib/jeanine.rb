@@ -1,13 +1,15 @@
 require 'forwardable'
 require 'logger'
+require 'tilt'
 
 require "jeanine/version"
 require 'jeanine/core_ext'
-require 'jeanine/router'
-require 'jeanine/app'
-require 'tilt'
 
 module Jeanine
+  def self._installed_plugins
+    @_installed_plugins ||= []
+  end
+
   def self.view_paths
     @_view_paths ||= Set.new(["views"])
   end
@@ -26,4 +28,7 @@ module Jeanine
   def self.router
     @router ||= Router.new
   end
+
+  autoload :Router,   'jeanine/router'
+  autoload :App,   'jeanine/app'
 end

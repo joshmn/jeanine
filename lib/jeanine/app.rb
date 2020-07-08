@@ -1,7 +1,8 @@
+require 'jeanine/rescuing'
+
 require 'jeanine/callbacks'
 require 'jeanine/mimes'
 require 'jeanine/request'
-require 'jeanine/rescuing'
 require 'jeanine/response'
 require 'jeanine/renderer'
 require 'jeanine/routing'
@@ -11,15 +12,26 @@ require 'jeanine/view_paths'
 module Jeanine
   class App
     include Session
-    include Rescuing
     include Routing::Evaluation
 
     attr_reader :request, :response
 
+    def self.plugin(name)
+      unless Jeanine._installed_plugins.include?(name)
+        Jeanine._installed_plugins << name
+        include Kernel.const_get("Jeanine::#{name}")
+      end
+    end
+
+    def self.installed_plugins
+      Jeanine._installed_plugins
+    end
+
+    plugin :Rescuing
+
     class << self
       include Callbacks
       include Routing::DSL
-      include Rescuing
       include ViewPaths
 
       alias :_new :new
@@ -47,21 +59,10 @@ module Jeanine
     end
 
     def call(env)
-      begin
-        @env = env
-        @request = Jeanine::Request.new(env)
-        @response = Jeanine::Response.new
-        catch(:halt) { route_eval }
-      rescue => error
-        handler = self.class.rescue_handlers[error.class]
-        raise error unless handler
-        if handler.is_a?(Symbol)
-          @response.write(send(handler, error))
-        else
-          @response.write(instance_exec(error, &handler))
-        end
-        @response.complete!
-      end
+      @env = env
+      @request = Jeanine::Request.new(env)
+      @response = Jeanine::Response.new
+      catch(:halt) { route_eval }
     end
 
     private

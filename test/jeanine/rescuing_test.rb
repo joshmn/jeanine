@@ -15,6 +15,7 @@ describe Jeanine::App do
           response.status = 404
           exception.message
         end
+
         get "/is-a-handled-error" do
           raise NoMethodError, "This is an error message"
         end
