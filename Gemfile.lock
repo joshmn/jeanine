@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    jeanine (0.7.7)
+    jeanine (0.8)
       rack
       tilt
 

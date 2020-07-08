@@ -7,11 +7,11 @@ require "jeanine/version"
 require 'jeanine/core_ext'
 
 module Jeanine
-  def env
+  def self.env
     @_env ||= (ENV["RACK_ENV"].presence || "development")
   end
 
-  def groups(*groups)
+  def self.groups(*groups)
     hash = groups.extract_options!
     env = Jeanine.env
     groups.unshift(:default, env)
