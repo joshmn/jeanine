@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
 
-require 'jeanine/cli'
+require_relative '../lib/jeanine/cli'
 
 Jeanine::CLI.new(ARGV).execute

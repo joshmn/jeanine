@@ -1,4 +1,4 @@
-require_relative 'boot'
+require_relative 'config/boot'
 
 require 'jeanine'
 
@@ -7,4 +7,23 @@ require 'jeanine'
 Bundler.require(*Jeanine.groups)
 
 class App < ::Jeanine::App
+  # plugin :Callbacks
+  # plugin :Rescuable
+  # plugin :Rendering
+  # plugin :Session
+
+  root do
+    "Hello world!"
+  end
+
+  get "/health" do
+    if request.json?
+      # Get this for free with plugin :Rendering
+      # and `render json: { status: "Healthy" }`
+      response.content_type = ::Rack::Mime::MIME_TYPES[".json"]
+      { status: "Healthy" }.to_json
+    else
+      "Healthy!"
+    end
+  end
 end

@@ -43,6 +43,16 @@ run App
 
 `$ rackup`
 
+Or generate a new app:
+
+```
+$ gem install jeanine
+$ jeanine new my_api
+$ cd my_api
+$ bundle
+$ rackup 
+```
+
 ## Advanced usage 
 
 ```ruby

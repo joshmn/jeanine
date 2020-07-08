@@ -1,7 +1,5 @@
 source 'https://rubygems.org'
 
-ruby "$RUBY_VERSION$"
-
 gem "jeanine"
 
 group :production do
