@@ -1,0 +1,8 @@
+# README
+
+Welcome to your Jeanine app.
+
+## Start
+
+`$ bundle`
+`$ rackup`

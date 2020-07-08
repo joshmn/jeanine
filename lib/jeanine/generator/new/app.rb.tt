@@ -1,0 +1,10 @@
+require_relative 'boot'
+
+require 'jeanine'
+
+# Require the gems listed in Gemfile, including any gems
+# you've limited to :test, :development, or :production.
+Bundler.require(*Jeanine.groups)
+
+class App < ::Jeanine::App
+end

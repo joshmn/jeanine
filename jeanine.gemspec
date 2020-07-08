@@ -6,7 +6,7 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Josh Brody"]
   spec.email         = ["git@josh.mn"]
 
-  spec.summary       = "A framework."
+  spec.summary       = "A lightning-fast, batteries-included Ruby web micro-framework."
   spec.description   = spec.summary
   spec.homepage      = "https://github.com/joshmn/jeanine"
   spec.license       = "MIT"
@@ -16,11 +16,10 @@ Gem::Specification.new do |spec|
   spec.metadata["source_code_uri"] = "https://github.com/joshmn/jeanine"
   spec.metadata["changelog_uri"] = "https://github.com/joshmn/jeanine"
 
-  # Specify which files should be added to the gem when it is released.
-  # The `git ls-files -z` loads the files in the RubyGem that have been added into git.
   spec.files = Dir['lib/**/*.rb']
 
-  spec.bindir        = "bin"
+  spec.bindir        = "exe"
+  spec.executables   = ["jeanine"]
   spec.executables   = spec.files.grep(%r{^bin/}) { |f| File.basename(f) }
   spec.require_paths = ["lib"]
 
