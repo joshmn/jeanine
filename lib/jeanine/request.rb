@@ -1,5 +1,4 @@
 require 'rack/request'
-require 'jeanine/headers'
 
 module Jeanine
   class Request < Rack::Request
@@ -15,10 +14,6 @@ module Jeanine
         end
       end
       super
-    end
-
-    def headers
-      @headers ||= Jeanine::Headers.new(self)
     end
 
     def post?

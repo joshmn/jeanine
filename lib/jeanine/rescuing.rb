@@ -4,6 +4,7 @@ module Jeanine
       base.extend ClassMethods
       base.prepend InstanceMethods
     end
+
     module InstanceMethods
       def call(env)
         begin

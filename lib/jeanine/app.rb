@@ -2,7 +2,6 @@ require 'jeanine/mimes'
 require 'jeanine/request'
 require 'jeanine/response'
 require 'jeanine/routing'
-require 'jeanine/view_paths'
 
 module Jeanine
   class App
@@ -30,7 +29,6 @@ module Jeanine
 
     class << self
       include Routing::DSL
-      include ViewPaths
 
       alias :_new :new
       def new(*args, &block)

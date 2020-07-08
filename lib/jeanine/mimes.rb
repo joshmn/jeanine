@@ -1,11 +1,15 @@
-require 'rack'
-
 module Jeanine
   class Mimes
     MimeTypeNotFound = Class.new(StandardError)
     MIME_TYPES_INVERTED = ::Rack::Mime::MIME_TYPES.invert
 
+    def self.loaded?
+      @loaded
+    end
+
     def self.load!
+      return if loaded?
+      @loaded = true
       register(:json, Rack::Mime::MIME_TYPES[".json"])
       register(:html, Rack::Mime::MIME_TYPES[".html"])
       register(:text, Rack::Mime::MIME_TYPES[".text"])

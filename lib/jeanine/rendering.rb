@@ -1,6 +1,15 @@
 require 'jeanine/view'
+require 'jeanine/view_paths'
 
 module Jeanine
+  def self.view_paths
+    @_view_paths ||= Set.new(["views"])
+  end
+
+  def self.tilt_cache
+    @title_cache ||= Tilt::Cache.new
+  end
+
   class Renderer
     def self._renderers
       @_renderers ||= Set.new
@@ -141,9 +150,21 @@ module Jeanine
   end
 
   module Rendering
+    def self.included(klass)
+      klass.extend ClassMethods
+    end
+
     def render(*args)
       @response.action_variables = instance_variables_cache
       Renderer.new(@response).render(*args)
     end
+
+    module ClassMethods
+      def append_view_path(path)
+        Jeanine.view_paths << path
+      end
+    end
   end
+
+
 end
