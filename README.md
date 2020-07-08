@@ -49,7 +49,11 @@ run App
 class App < Jeanine::App 
   path "/posts" do 
     get do 
-      "Posts get"
+      if request.json?
+        render json: []
+      else
+        "Posts index"
+      end
     end 
     get "new" do 
       "Posts new"
@@ -211,6 +215,7 @@ rails-api              383       34949
 ## Todo 
 
 * Callback constraints 
+* File downloads 
 
 ## Contributing
 
