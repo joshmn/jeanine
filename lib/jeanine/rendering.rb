@@ -165,6 +165,4 @@ module Jeanine
       end
     end
   end
-
-
 end

@@ -23,9 +23,10 @@ module Jeanine
       Jeanine._installed_plugins
     end
 
-    #plugin :Rescuing
+    # plugin :Callbacks
     # plugin :Rendering
-    #plugin :Callbacks
+    # plugin :Rescuing
+    # plugin :Session
 
     class << self
       include Routing::DSL
