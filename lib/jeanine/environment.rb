@@ -1,4 +1,4 @@
-module Broding
+module Jeanine
   def env
     @_env ||= (ENV["RACK_ENV"].presence || "development")
   end
