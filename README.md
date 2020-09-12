@@ -65,22 +65,28 @@ class App < Jeanine::App
         "Posts index"
       end
     end 
+    
     get "new" do 
       "Posts new"
     end
+    
     post do 
       "Posts post"
     end 
+    
     path ":id" do 
       get do 
         "Posts #{params[:id]}"
       end
+      
       match via: [:put, :patch] do 
         "Posts #{request.via} #{params[:id]}"
       end
+      
       delete do
         "Posts delete #{params[:id]}" 
       end 
+      
       path "/comments" do
         get do 
           "Posts #{params[:id]} comments"
@@ -97,15 +103,18 @@ end
 
 Supports `before` and `after` callbacks (same DSL): 
 
-```
+```ruby
 class App < Jeanine::App
   plugin :Callbacks 
+  
   before do 
     puts "All"
   end
+  
   before /posts/ do
     puts "Before posts"
   end 
+  
   before /posts\/\d*/, /comments\/\d*/  do 
     puts "Before posts/:id, comments/:id"
     response.headers['X-Thing-Id'] = params[:id]
@@ -120,6 +129,7 @@ Basic support for rendering. Be explicit.
 ```ruby 
 class App < Jeanine::App
   plugin :Rendering 
+  
   # loads views/root.html.erb and views/layouts/application.html.erb
   root do 
     @title = "My cool app"
@@ -132,9 +142,10 @@ end
 
 Uses Rack's session management.
 
-```ruby 
+```ruby
 class App < Jeanine::App
   plugin :Session
+  
   root do 
     session[:uid] = SecureRandom.hex
   end
@@ -143,14 +154,17 @@ end
 
 ### Error handling
 
-```ruby 
+```ruby
 class App < Jeanine::App
-  plugin :Resucable 
+  plugin :Rescuable 
+  
   rescue_from NoMethodError, RuntimeError do |exception|
     response.status = 500
     "Oh no!"
   end
+  
   rescue_from StandardError, with: :handle_error!
+  
   root do 
     @title = "My cool app"
     raise NoMethodError 
