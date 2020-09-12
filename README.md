@@ -3,7 +3,9 @@
 A Ruby micro-web-framework that gives you enough training wheels to be productive, while being as nearly as fast as Rack itself.
 
 Its design (and some parts of the code) is influenced by/inherited from (thanks!) Ruby on Rails, Rack::App, Hobbit, and Cuba. Without them this is nothing.
- 
+
+![jeanine logo](jeanine.png)
+
 ## Name 
 
 Named after my mom. Because she was the best.
